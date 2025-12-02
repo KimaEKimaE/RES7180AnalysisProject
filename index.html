@@ -602,6 +602,142 @@
         <p class="researcher">RES 7180: Analysis & Interpretation Project</p>
     </div>
 
+<section id="problem" style="min-height: 100vh; padding: 6rem 2rem; position: relative; background: linear-gradient(135deg, #1A1A2E 0%, #3D0814 100%);">
+    <div class="content-container">
+        <div class="section-header">
+            <div class="section-number" style="font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #FFD60A; margin-bottom: 1rem; text-align: center;">The Problem</div>
+            <h2 class="section-title" style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; margin-bottom: 1rem; color: #FF6B6B; text-align: center;">The College Readiness Crisis</h2>
+            <p style="text-align: center; color: #F8F9FA; font-size: 1.2rem; max-width: 800px; margin: 0 auto;">Current data reveals a stark reality: the majority of high school graduates are not meeting college readiness benchmarks.</p>
+        </div>
+
+        <!-- National Statistics -->
+        <div style="margin: 4rem 0;">
+            <h3 style="font-family: 'Montserrat', sans-serif; color: #FFD60A; font-size: 2rem; text-align: center; margin-bottom: 3rem;">🇺🇸 National Statistics</h3>
+            
+            <div class="card" onclick="toggleCard(this)" style="background: #FFFFFF; border-radius: 20px; padding: 2.5rem; margin-bottom: 2rem; border: 3px solid #FF6B6B; transition: all 0.3s ease; cursor: pointer; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
+                <div class="card-header" style="font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 700; color: #7209B7; display: flex; align-items: center; justify-content: space-between; gap: 1rem;">
+                    <div class="card-header-content" style="display: flex; align-items: center; gap: 1rem;">
+                        <span class="icon" style="width: 50px; height: 50px; background: #7209B7; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">📊</span>
+                        <span>2023 ACT Data: A National Crisis</span>
+                    </div>
+                    <span class="toggle-icon" style="font-size: 2rem; color: #06D6A0; transition: transform 0.3s ease;">▼</span>
+                </div>
+                <div class="card-content" style="font-size: 1.1rem; line-height: 1.8; color: #2D2D2D; max-height: 0; overflow: hidden; transition: max-height 0.5s ease, margin-top 0.3s ease;">
+                    <p style="margin-bottom: 2rem; font-size: 1.15rem; line-height: 1.8;">ACT Education Corp's (2024) data shows that <strong>1.4 million students</strong> from the 2023 graduating class took the ACT.</p>
+                    
+                    <!-- Stat Cards Grid -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0;">
+                        <!-- Met All Benchmarks -->
+                        <div style="background: linear-gradient(135deg, rgba(6, 214, 160, 0.2), rgba(6, 214, 160, 0.05)); padding: 2rem; border-radius: 15px; border-left: 5px solid #06D6A0; text-align: center;">
+                            <div style="font-size: 3.5rem; font-weight: 900; color: #06D6A0; margin-bottom: 0.5rem;">20.8%</div>
+                            <div style="font-size: 1.1rem; color: #2D2D2D; font-weight: 600; margin-bottom: 0.5rem;">Met ALL Four Benchmarks</div>
+                            <div style="font-size: 0.95rem; color: #666;">291,200 students</div>
+                        </div>
+                        
+                        <!-- Met No Benchmarks -->
+                        <div style="background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(255, 107, 107, 0.05)); padding: 2rem; border-radius: 15px; border-left: 5px solid #FF6B6B; text-align: center;">
+                            <div style="font-size: 3.5rem; font-weight: 900; color: #FF6B6B; margin-bottom: 0.5rem;">43.3%</div>
+                            <div style="font-size: 1.1rem; color: #2D2D2D; font-weight: 600; margin-bottom: 0.5rem;">Met NO Benchmarks</div>
+                            <div style="font-size: 0.95rem; color: #666;">606,200 students</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Visual Bar -->
+                    <div style="margin: 2rem 0;">
+                        <div style="font-size: 1rem; font-weight: 600; color: #2D2D2D; margin-bottom: 0.5rem;">Readiness Gap Visualization</div>
+                        <div style="background: #E0E0E0; height: 40px; border-radius: 20px; overflow: hidden; position: relative;">
+                            <div style="background: linear-gradient(90deg, #06D6A0, #04A777); width: 20.8%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.9rem;">Ready: 20.8%</div>
+                            <div style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: #2D2D2D; font-weight: 700; font-size: 0.9rem;">Not Ready: 79.2%</div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(255, 214, 10, 0.15); padding: 1.5rem; border-radius: 10px; margin-top: 2rem; border-left: 4px solid #FFD60A;">
+                        <p style="margin: 0; font-size: 0.95rem; color: #2D2D2D; line-height: 1.6;"><strong>Source:</strong> ACT. (2023, October 10). <em>Fewer High School Seniors Ready for College as ACT Scores Continue to Decline</em>. ACT. <a href="https://leadershipblog.act.org/2023/10/act-scores-decline.html" target="_blank" style="color: #7209B7;">https://leadershipblog.act.org/2023/10/act-scores-decline.html</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- North Carolina Statistics -->
+        <div style="margin: 4rem 0;">
+            <h3 style="font-family: 'Montserrat', sans-serif; color: #06D6A0; font-size: 2rem; text-align: center; margin-bottom: 3rem;">🏛️ North Carolina Statistics</h3>
+            
+            <div class="card" onclick="toggleCard(this)" style="background: #FFFFFF; border-radius: 20px; padding: 2.5rem; margin-bottom: 2rem; border: 3px solid #06D6A0; transition: all 0.3s ease; cursor: pointer; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
+                <div class="card-header" style="font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 700; color: #7209B7; display: flex; align-items: center; justify-content: space-between; gap: 1rem;">
+                    <div class="card-header-content" style="display: flex; align-items: center; gap: 1rem;">
+                        <span class="icon" style="width: 50px; height: 50px; background: #06D6A0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">📍</span>
+                        <span>2024 NC Graduates: Local Context</span>
+                    </div>
+                    <span class="toggle-icon" style="font-size: 2rem; color: #06D6A0; transition: transform 0.3s ease;">▼</span>
+                </div>
+                <div class="card-content" style="font-size: 1.1rem; line-height: 1.8; color: #2D2D2D; max-height: 0; overflow: hidden; transition: max-height 0.5s ease, margin-top 0.3s ease;">
+                    <p style="margin-bottom: 2rem; font-size: 1.15rem; line-height: 1.8;">Horizon Education (2024) reports that in 2024, <strong>89% of North Carolina's graduating class</strong> participated in the ACT.</p>
+                    
+                    <!-- Subject Benchmarks -->
+                    <div style="background: rgba(114, 9, 183, 0.05); padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
+                        <h4 style="font-family: 'Montserrat', sans-serif; color: #7209B7; font-size: 1.4rem; margin-bottom: 1.5rem; text-align: center;">Percentage of Students Meeting Benchmarks by Subject</h4>
+                        
+                        <!-- English -->
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <span style="font-weight: 700; color: #2D2D2D;">📝 English</span>
+                                <span style="font-weight: 700; color: #7209B7; font-size: 1.2rem;">42%</span>
+                            </div>
+                            <div style="background: #E0E0E0; height: 30px; border-radius: 15px; overflow: hidden;">
+                                <div style="background: linear-gradient(90deg, #7209B7, #9D4EDD); width: 42%; height: 100%; border-radius: 15px; transition: width 1s ease;"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Reading -->
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <span style="font-weight: 700; color: #2D2D2D;">📖 Reading</span>
+                                <span style="font-weight: 700; color: #06D6A0; font-size: 1.2rem;">35%</span>
+                            </div>
+                            <div style="background: #E0E0E0; height: 30px; border-radius: 15px; overflow: hidden;">
+                                <div style="background: linear-gradient(90deg, #06D6A0, #04A777); width: 35%; height: 100%; border-radius: 15px; transition: width 1s ease;"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Science -->
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <span style="font-weight: 700; color: #2D2D2D;">🔬 Science</span>
+                                <span style="font-weight: 700; color: #FFD60A; font-size: 1.2rem;">26%</span>
+                            </div>
+                            <div style="background: #E0E0E0; height: 30px; border-radius: 15px; overflow: hidden;">
+                                <div style="background: linear-gradient(90deg, #FFD60A, #FFC300); width: 26%; height: 100%; border-radius: 15px; transition: width 1s ease;"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Math -->
+                        <div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <span style="font-weight: 700; color: #2D2D2D;">➗ Math</span>
+                                <span style="font-weight: 700; color: #FF6B6B; font-size: 1.2rem;">25%</span>
+                            </div>
+                            <div style="background: #E0E0E0; height: 30px; border-radius: 15px; overflow: hidden;">
+                                <div style="background: linear-gradient(90deg, #FF6B6B, #EE5A52); width: 25%; height: 100%; border-radius: 15px; transition: width 1s ease;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Key Insight -->
+                    <div style="background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(255, 214, 10, 0.1)); padding: 2rem; border-radius: 15px; border: 3px solid #FF6B6B; margin-bottom: 2rem;">
+                        <h4 style="font-family: 'Montserrat', sans-serif; color: #7209B7; font-size: 1.3rem; margin-bottom: 1rem;">🚨 Critical Finding</h4>
+                        <p style="margin: 0; color: #2D2D2D; line-height: 1.8;">These statistics suggest that current educational practices in North Carolina are <strong>not adequately equipping students</strong> with the necessary skills to succeed in college. This suggests a <strong>disconnect between the post-secondary and secondary education sectors</strong>.</p>
+                    </div>
+                    
+                    <div style="background: rgba(255, 214, 10, 0.15); padding: 1.5rem; border-radius: 10px; margin-top: 2rem; border-left: 4px solid #FFD60A;">
+                        <p style="margin: 0; font-size: 0.95rem; color: #2D2D2D; line-height: 1.6;"><strong>Source:</strong> Horizon Education. (2024, December 16). <em>2024 Average ACT® Scores by State</em>. Horizoneducation.com. <a href="https://horizoneducation.com/blog/average-act-scores-by-state#:~:text=23-,National%20Averages,the%20science%20benchmark%20of%2023" target="_blank" style="color: #7209B7;">https://horizoneducation.com/blog/average-act-scores-by-state</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+    
     <section id="participants">
         <div class="content-container">
             <div class="section-header">
