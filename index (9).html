@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Readiness Research Journey</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --turquoise: #06D6A0;
+            --purple: #7209B7;
+            --yellow: #FFD60A;
+            --dark: #1A1A2E;
+            --light: #F8F9FA;
+            --card-bg: #FFFFFF;
+            --card-text: #2D2D2D;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            padding: 2rem;
+            z-index: 1000;
+            display: flex;
+            gap: 1rem;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        
+        .nav a {
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            background: rgba(6, 214, 160, 0.1);
+        }
+        
+        .nav a:hover {
+            background: var(--turquoise);
+            color: var(--dark);
+            transform: translateX(-5px);
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--purple) 0%, var(--dark) 100%);
+        }
+        
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--turquoise), var(--yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--turquoise);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+        
+        .hero .researcher {
+            font-size: 1.2rem;
+            color: var(--light);
+            opacity: 0.8;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        section {
+            min-height: 100vh;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .section-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--turquoise);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        #participants {
+            background: linear-gradient(135deg, #0F4C75 0%, var(--dark) 100%);
+        }
+        
+        #participants .section-title {
+            color: var(--turquoise);
+        }
+        
+        #step1 {
+            background: linear-gradient(135deg, var(--dark) 0%, #2A0845 100%);
+        }
+        
+        #step1 .section-title {
+            color: var(--yellow);
+        }
+        
+        #step2 {
+            background: linear-gradient(135deg, #1A1A2E 0%, #0A4D68 100%);
+        }
+        
+        #step2 .section-title {
+            color: var(--turquoise);
+        }
+        
+        #step3 {
+            background: linear-gradient(135deg, #2A0845 0%, #1A1A2E 100%);
+        }
+        
+        #step3 .section-title {
+            color: var(--yellow);
+        }
+        
+        #step4 {
+            background: linear-gradient(135deg, #0A4D68 0%, #1A1A2E 100%);
+        }
+        
+        #step4 .section-title {
+            color: var(--turquoise);
+        }
+        
+        #step5 {
+            background: linear-gradient(135deg, #1A1A2E 0%, #2A0845 100%);
+        }
+        
+        #step5 .section-title {
+            color: var(--yellow);
+        }
+        
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border: 3px solid var(--turquoise);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(6, 214, 160, 0.4);
+        }
+        
+        .card-header {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--purple);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        
+        .card-header-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .icon {
+            width: 50px;
+            height: 50px;
+            background: var(--purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .toggle-icon {
+            font-size: 2rem;
+            color: var(--turquoise);
+            transition: transform 0.3s ease;
+        }
+        
+        .toggle-icon.open {
+            transform: rotate(180deg);
+        }
+        
+        .card-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--card-text);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, margin-top 0.3s ease;
+        }
+        
+        .card-content.open {
+            max-height: 3000px;
+            margin-top: 1.5rem;
+        }
+        
+        .card-content p {
+            margin-bottom: 1.2rem;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, rgba(255, 214, 10, 0.4) 0%, rgba(114, 9, 183, 0.2) 100%);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .bio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .bio-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 3px solid var(--yellow);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .bio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(255, 214, 10, 0.4);
+        }
+        
+        .bio-card.researcher {
+            grid-column: 1 / -1;
+            border-color: var(--turquoise);
+            background: linear-gradient(135deg, rgba(6, 214, 160, 0.1), var(--card-bg));
+        }
+        
+        .bio-header {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--purple);
+            margin-bottom: 0.5rem;
+        }
+        
+        .bio-role {
+            color: var(--turquoise);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .bio-content {
+            color: var(--card-text);
+            line-height: 1.8;
+        }
+        
+        .research-questions {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            border: 4px solid var(--yellow);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .research-questions h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--purple);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .main-question {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--card-text);
+            margin-bottom: 2rem;
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(6, 214, 160, 0.2), rgba(255, 214, 10, 0.2));
+            border-radius: 15px;
+            border: 2px solid var(--turquoise);
+        }
+        
+        .sub-questions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .sub-question {
+            background: rgba(114, 9, 183, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--purple);
+            color: var(--card-text);
+        }
+        
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .insight-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 3px solid var(--yellow);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .insight-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--purple);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .insight-card ul {
+            list-style: none;
+            padding-left: 0;
+            color: var(--card-text);
+        }
+        
+        .insight-card li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.8rem;
+        }
+        
+        .insight-card li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--turquoise);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .process-flow {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .flow-step {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            border: 3px solid var(--turquoise);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .flow-step:not(:last-child)::after {
+            content: "→";
+            position: absolute;
+            right: -2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: var(--yellow);
+            font-weight: bold;
+        }
+        
+        .flow-step-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--purple);
+            margin-bottom: 0.5rem;
+        }
+        
+        .flow-step-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--card-text);
+        }
+        
+        .theme-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border: 4px solid var(--yellow);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .theme-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(255, 214, 10, 0.4);
+        }
+        
+        .theme-header {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--purple);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .theme-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, margin-top 0.3s ease;
+        }
+        
+        .theme-content.open {
+            max-height: 3000px;
+            margin-top: 1rem;
+        }
+        
+        .theme-concept {
+            background: linear-gradient(135deg, rgba(6, 214, 160, 0.2), rgba(255, 214, 10, 0.2));
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--turquoise);
+        }
+        
+        .theme-concept-label {
+            font-weight: 700;
+            color: var(--purple);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .theme-definition {
+            color: var(--card-text);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .theme-codes {
+            background: rgba(114, 9, 183, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .theme-codes-label {
+            font-weight: 700;
+            color: var(--purple);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .code-tag {
+            display: inline-block;
+            background: var(--purple);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin: 0.3rem;
+            font-size: 0.9rem;
+        }
+        
+        .theme-boundaries {
+            background: rgba(255, 214, 10, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--yellow);
+        }
+        
+        .theme-boundaries-label {
+            font-weight: 700;
+            color: var(--purple);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .theme-rq {
+            background: rgba(6, 214, 160, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--turquoise);
+        }
+        
+        .theme-rq-label {
+            font-weight: 700;
+            color: var(--turquoise);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: row;
+                flex-wrap: wrap;
+                padding: 1rem;
+                background: rgba(26, 26, 46, 0.95);
+                width: 100%;
+            }
+            
+            section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+            
+            .card-header {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="#hero">Home</a>
+        <a href="#participants">Participants</a>
+        <a href="#step1">Familiarization</a>
+        <a href="#step2">Strategy</a>
+        <a href="#step3">Analysis</a>
+        <a href="#step4">Interpretation</a>
+        <a href="#step5">Reflexivity</a>
+    </nav>
+
+    <div class="hero" id="hero">
+        <h1>Bridging the Divide</h1>
+        <p class="subtitle">A Qualitative Journey into College Readiness</p>
+        <p class="researcher">RES 7180: Analysis & Interpretation Project</p>
+    </div>
+
+    <section id="participants">
+        <div class="content-container">
+            <div class="section-header">
+                <h2 class="section-title">Meet the Researcher & Participants</h2>
+            </div>
+
+            <div class="bio-grid">
+                <div class="bio-card researcher">
+                    <div class="bio-header">Kima Ellis</div>
+                    <div class="bio-role">🔬 Researcher | Instructional Designer</div>
+                    <div class="bio-content">
+                        Kima Ellis is an Instructional Designer in the Office of e-Learning at North Carolina Central University, where she partners with faculty to create dynamic, student-centered online learning experiences. As a Higher Education Leadership doctoral student specializing in Instructional Technology Leadership, she combines research-based practices with hands-on design expertise to strengthen teaching and learning across modalities. Passionate about improving college readiness and leveraging AI to enhance learning experiences, Kima brings a forward-thinking approach to instructional design that supports both faculty success and student achievement.
+                    </div>
+                </div>
+
+                <div class="bio-card">
+                    <div class="bio-header">🌟 Monica</div>
+                    <div class="bio-role">Special Education Director | 22+ Years in Education</div>
+                    <div class="bio-content">
+                        Monica has over two decades of experience in special education, beginning her career as an elementary school teacher before moving into facilitator and director roles. She has worked across five school districts, overseeing programs from pre-K through postsecondary transitions. Her expertise includes transition planning beginning at age 14, graduation pathways for students with disabilities, and coordination with external support agencies. Her perspective is shaped by both administrative leadership and hands-on work supporting diverse learners.
+                    </div>
+                </div>
+
+                <div class="bio-card">
+                    <div class="bio-header">🌟 Courtney</div>
+                    <div class="bio-role">High School English Teacher & Instructional Designer | Middle & High School ELA Background</div>
+                    <div class="bio-content">
+                        Courtney teaches high school English, works as an instructional designer, and has extensive experience working with students at both the middle and high school levels. She expressed a strong awareness of differences in academic rigor between schools and districts, and how those disparities affect students' college readiness. Courtney also highlighted challenges related to student accountability, grading structures, and parental involvement. She brings a classroom-level perspective grounded in daily interactions with adolescents navigating academic expectations and life skills.
+                    </div>
+                </div>
+
+                <div class="bio-card">
+                    <div class="bio-header">🌟 Matthew</div>
+                    <div class="bio-role">High School Teacher | Focus on Accountability & Grading</div>
+                    <div class="bio-content">
+                        Matthew works at the high school level and frequently supports students with issues related to organization, motivation, and follow-through. His contributions centered on the limitations of current grading practices, the pressure created by summative assessment systems, and parental monitoring through online grade portals. He emphasized how these structures can unintentionally undermine student learning and resilience. His perspective reflects close observation of how policy-level decisions affect student behavior and classroom culture.
+                    </div>
+                </div>
+
+                <div class="bio-card">
+                    <div class="bio-header">🌟 Victoria</div>
+                    <div class="bio-role">Parent & Former College Student | Dual Perspective on Readiness</div>
+                    <div class="bio-content">
+                        Victoria participated in the focus group as both a parent of a current high school student and someone reflecting on her own educational experiences. She described the challenges her son faces with resilience, follow-through, and communication, providing insight into the soft skills students often lack. She also vividly critiqued standardized tests, drawing on her own college trajectory and adolescence across different districts. Her dual role provides a valuable family-centered perspective on readiness and system navigation.
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="step1">
+        <div class="content-container">
+            <div class="section-header">
+                <h2 class="section-title">Familiarization & Positionality</h2>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-header">
+                    <div class="card-header-content">
+                        <span class="icon">💭</span>
+                        <span>What assumptions am I basing my thinking on?</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="card-content">
+                    <p>My first assumption is that <span class="highlight">post-secondary and secondary institutions impede student learning by operating in silos</span>.</p>
+                    
+                    <p>I also assume that EOGs and other standardized tests are not an accurate measure of college readiness, and therefore create a false sense of college preparedness that leads to struggling first-year college students.</p>
+                    
+                    <p>Bringing K-16 educators together to discuss the college readiness epidemic will uncover misconceptions and theories that could possibly lead to a solution.</p>
+                    
+                    <p>Lastly, I believe that <span class="highlight">the solution to the college readiness crisis lies in a collaborative curriculum</span> developed by secondary and post-secondary educators.</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-header">
+                    <div class="card-header-content">
+                        <span class="icon">🌍</span>
+                        <span>What broader experiences inform my thinking?</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="card-content">
+                    <p>My transition to instructional design was catalyzed by a recurring frustration: semester after semester, I encountered first-year college students who were unprepared for collegiate-level writing. The gap between what high school prepared them for and what college demanded of them was not just noticeable—it was <span class="highlight">profound and systematic</span>.</p>
+                    
+                    <p>My eight years in the English classroom taught me that the "why" behind student unpreparedness matters as much as the "what." I witnessed firsthand how students' experiences, their communities' perceptions of education, and the resources available to them shaped their college readiness far more than any single curriculum or test score could measure.</p>
+                    
+                    <p>Currently, I work at the intersection of pedagogy and technology, reviewing faculty courses and designing online learning experiences in Canvas LMS. I am a passionate advocate for educational technology and AI integration in teaching and learning. However, my instructional design work, recent research, and conversations with my peers who work in the K-12 sector have only deepened my awareness of the college readiness crisis—<span class="highlight">I now see it from both sides of the educational divide</span>.</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-header">
+                    <div class="card-header-content">
+                        <span class="icon">👤</span>
+                        <span>How is this connected to my identities and experiences?</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="card-content">
+                    <p>I am an African-American woman who was raised by a single mother who believed women had to be twice as smart as men and three times as smart if you were a black woman. When I was younger, I didn't fully understand what she meant, but now that I am an adult who has experienced shock from other races when they realize that I'm not only well-spoken but also intelligent, has shown me exactly where my mother's perspective came from.</p>
+                    
+                    <p>She cultivated my love of learning at an early age, along with my perceptions of how I would be treated as an uneducated black woman in America. I cannot ignore what she instilled in me. It is a part of me, and it has helped me become the woman I am today.</p>
+                    
+                    <p>Tekin & Kotaman (2013) note that social constructivist researchers do not try to eliminate their biases; instead, they <span class="highlight">"embrace the value-laden nature of research, understanding that their involvement in the research process shapes the knowledge that is produced. This leads to a co-construction of knowledge, where the researcher and participants work together to create a shared understanding"</span> (p. 84).</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-header">
+                    <div class="card-header-content">
+                        <span class="icon">❓</span>
+                        <span>Research Questions</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="card-content">
+                    <div class="research-questions" style="background: linear-gradient(135deg, var(--purple), var(--dark)); padding: 3rem; border-radius: 20px; border: 3px solid var(--yellow);">
+                        <h3 style="font-family: 'Montserrat', sans-serif; color: var(--yellow); font-size: 2rem; margin-bottom: 1.5rem; text-align: center;">Research Questions</h3>
+                        <div class="main-question" style="font-size: 1.5rem; font-weight: 600; color: var(--turquoise); margin-bottom: 2rem; text-align: center; padding: 1.5rem; background: rgba(6, 214, 160, 0.1); border-radius: 15px;">
+                            What happens when secondary and post-secondary educators are brought together to discuss college readiness?
+                        </div>
+                        <div class="sub-questions" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                            <div class="sub-question" style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 15px; border-left: 4px solid var(--turquoise); color: var(--light);">How do North Carolina educators define college readiness?</div>
+                            <div class="sub-question" style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 15px; border-left: 4px solid var(--turquoise); color: var(--light);">How do secondary and post-secondary educators' perspectives on college readiness evolve through collaboration?</div>
+                            <div class="sub-question" style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 15px; border-left: 4px solid var(--turquoise); color: var(--light);">How do conversations between secondary and post-secondary educators challenge or confirm their assumptions about each other's pedagogy?</div>
+                            <div class="sub-question" style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 15px; border-left: 4px solid var(--turquoise); color: var(--light);">What do secondary and post-secondary educators think about collaborating to develop a college and career readiness curriculum?</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <h4>Initial Meanings</h4>
+                    <ul>
+                        <li>No one appeared to have an actual definition of college readiness</li>
+                        <li>All participants seemed to agree that something needs to be done and that the kids aren't ready for college</li>
+                        <li>Many thought their district or K-12 co-workers would be interested in participating in this type of study</li>
+                    </ul>
+                </div>
+
+                <div class="insight-card">
+                    <h4>Characterizations</h4>
+                    <ul>
+                        <li>Multi-faceted challenge</li>
+                        <li>Many stakeholders involved</li>
+                        <li>No one-size-fits-all solution</li>
+                    </ul>
+                </div>
+
+                <div class="insight-card">
+                    <h4>The World Expressed</h4>
+                    <ul>
+                        <li>A world stuck in its positivist ways</li>
+                        <li>Still viewing learning as objective instead of subjective</li>
+                        <li>Systemic disconnection between educational levels</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="step2">
+        <div class="content-container">
+            <div class="section-header">
+                <h2 class="section-title">Analytic Strategy</h2>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-header">
+                    <div class="card-header-content">
+                        <span class="icon">🔍</span>
+                        <span>My Chosen Method: Reflexive Thematic Analysis</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="card-content">
+                    <p>I used <span class="highlight">Braun & Clarke's reflexive thematic analysis</span> approach to analyze focus group data from secondary and post-secondary educators discussing college readiness. This method allowed me to move systematically from raw data to meaningful patterns while remaining reflexively aware of how my own positionality shaped interpretation.</p>
+                    
+                    <p>The analysis process involved:</p>
+                    <p><strong>1. Data familiarization</strong> through repeated reading and initial note-taking<br>
+                    <strong>2. Systematic coding</strong> using both descriptive (literal) and analytical (interpretive) codes<br>
+                    <strong>3. Theme development</strong> by clustering codes into candidate patterns<br>
+                    <strong>4. Theme refinement</strong> through iterative review against the full dataset<br>
+                    <strong>5. Final interpretation</strong> that addresses research questions holistically</p>
+                    
+                    <p>This approach aligns with my social constructivist framework, acknowledging that meaning-making is collaborative and value-laden rather than objective or neutral.</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-header">
+                    <div class="card-header-content">
+                        <span class="icon">📋</span>
+                        <span>The Complete Code Book</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="card-content">
+                    <div class="research-questions" style="margin-top: 0;">
+                        <h3>The Code Book</h3>
+                        <p style="text-align: center; color: var(--card-text); margin-bottom: 2rem;">Codes are divided into <strong>Descriptive</strong> (literal content) and <strong>Analytical</strong> (interpretive). Each includes: Code Name, Type, Definition, and Example Excerpts.</p>
+                        
+                        <div style="margin-top: 3rem;">
+                            <h4 style="font-family: 'Montserrat', sans-serif; color: var(--turquoise); font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center;">📋 Descriptive Codes</h4>
+                    
+                    <div class="card" onclick="toggleCard(this)" style="margin-bottom: 1.5rem;">
+                        <div class="card-header" style="font-size: 1.3rem;">
+                            <div class="card-header-content">
+                                <span style="color: var(--turquoise); font-weight: 700;">Code 1</span>
+                                <span>Lack of Shared Definition of College Readiness</span>
+                            </div>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="card-content">
+                            <p><strong>Type:</strong> Descriptive</p>
+                            <p><strong>Definition:</strong> Statements showing that participants do not hold a single, shared understanding of what "college readiness" means.</p>
+                            <p><strong>Example Excerpts:</strong></p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--turquoise); margin: 1rem 0;">
+                                "When I hear the word college readiness, I think about, groups of students who may be college ready, or might not be college ready, but are going to work towards being college ready eventually. … there's different versions." <em>(Monica)</em>
+                            </p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--turquoise); margin: 1rem 0;">
+                                "When I hear the words college readiness, I would say that when the student gets to college, it not to be, like, a huge shock to them, where they're struggling and not able to keep up." <em>(Courtney)</em>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card" onclick="toggleCard(this)" style="margin-bottom: 1.5rem;">
+                        <div class="card-header" style="font-size: 1.3rem;">
+                            <div class="card-header-content">
+                                <span style="color: var(--turquoise); font-weight: 700;">Code 4</span>
+                                <span>Soft Skills as Essential</span>
+                            </div>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="card-content">
+                            <p><strong>Type:</strong> Descriptive</p>
+                            <p><strong>Definition:</strong> References to interpersonal, emotional, or behavioral skills (e.g., communication, resilience, self-regulation) as necessary for readiness.</p>
+                            <p><strong>Example Excerpts:</strong></p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--turquoise); margin: 1rem 0;">
+                                "What are the soft skills, even, that we can better measure to have some sense of whether or not, by the time we send you off to college, you're gonna make it?" <em>(Matthew)</em>
+                            </p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--turquoise); margin: 1rem 0;">
+                                "I have on my post-it notes that we've been talking about, like, if you can advocate, and if you can show resilience and grit, and you can, you know, face adversity and overcome, I feel like you can learn a thing. Like, you could go and do the things…Students need to fail and then overcome that… they need more experiences with adversity." <em>(Victoria)</em>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card" onclick="toggleCard(this)" style="margin-bottom: 1.5rem;">
+                        <div class="card-header" style="font-size: 1.3rem;">
+                            <div class="card-header-content">
+                                <span style="color: var(--turquoise); font-weight: 700;">Code 7</span>
+                                <span>Self-Advocacy & Executive Function Deficits</span>
+                            </div>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="card-content">
+                            <p><strong>Type:</strong> Descriptive</p>
+                            <p><strong>Definition:</strong> Descriptions of students lacking the organizational, communication, or self-advocacy skills needed to navigate educational systems.</p>
+                            <p><strong>Example Excerpts:</strong></p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--turquoise); margin: 1rem 0;">
+                                "Once you graduate high school… you have to become your own self-advocate." <em>(Monica)</em>
+                            </p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--turquoise); margin: 1rem 0;">
+                                "He didn't know how to follow up… he needs to send the email, ask the questions." <em>(Victoria)</em>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card" onclick="toggleCard(this)" style="margin-bottom: 1.5rem;">
+                        <div class="card-header" style="font-size: 1.3rem;">
+                            <div class="card-header-content">
+                                <span style="color: var(--turquoise); font-weight: 700;">Code 8</span>
+                                <span>Parental Involvement / Over-Involvement</span>
+                            </div>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="card-content">
+                            <p><strong>Type:</strong> Descriptive</p>
+                            <p><strong>Definition:</strong> Mentions of parents monitoring grades, intervening, or struggling to adjust to collegiate independence norms.</p>
+                            <p><strong>Example Excerpts:</strong></p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--turquoise); margin: 1rem 0;">
+                                "Parents were freaking out when they learned they wouldn't see grades anymore." <em>(Matthew)</em>
+                            </p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--turquoise); margin: 1rem 0;">
+                                "We had to set boundaries with parents… some would threaten teachers." <em>(Courtney)</em>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 4rem;">
+                    <h4 style="font-family: 'Montserrat', sans-serif; color: var(--purple); font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center;">🔬 Analytical Codes</h4>
+                    
+                    <div class="card" onclick="toggleCard(this)" style="margin-bottom: 1.5rem;">
+                        <div class="card-header" style="font-size: 1.3rem;">
+                            <div class="card-header-content">
+                                <span style="color: var(--purple); font-weight: 700;">Code 2</span>
+                                <span>Rigor Gaps Across Schools</span>
+                            </div>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="card-content">
+                            <p><strong>Type:</strong> Analytical</p>
+                            <p><strong>Definition:</strong> Interpretations of inequitable or inconsistent levels of academic rigor across districts that lead to uneven preparation.</p>
+                            <p><strong>Example Excerpts:</strong></p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--purple); margin: 1rem 0;">
+                                "She made all A's… but when we got to college it was a huge difference." <em>(Courtney)</em>
+                            </p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--purple); margin: 1rem 0;">
+                                "The level of rigor is very different depending on the district." <em>(Courtney)</em>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card" onclick="toggleCard(this)" style="margin-bottom: 1.5rem;">
+                        <div class="card-header" style="font-size: 1.3rem;">
+                            <div class="card-header-content">
+                                <span style="color: var(--purple); font-weight: 700;">Code 3</span>
+                                <span>Misalignment Between K–12 and Higher Education</span>
+                            </div>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="card-content">
+                            <p><strong>Type:</strong> Analytical</p>
+                            <p><strong>Definition:</strong> Interpretations that K–12 expectations, curriculum, or systems do not align with those in higher education.</p>
+                            <p><strong>Example Excerpts:</strong></p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--purple); margin: 1rem 0;">
+                                "Students come in knowing Canvas… then in college the structure isn't there." <em>(Courtney)</em>
+                            </p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--purple); margin: 1rem 0;">
+                                "We're not in sync… what high school writing requires doesn't match college expectations." <em>(Kima)</em>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card" onclick="toggleCard(this)" style="margin-bottom: 1.5rem;">
+                        <div class="card-header" style="font-size: 1.3rem;">
+                            <div class="card-header-content">
+                                <span style="color: var(--purple); font-weight: 700;">Code 5</span>
+                                <span>Failure Avoidance / Low Tolerance for Adversity</span>
+                            </div>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="card-content">
+                            <p><strong>Type:</strong> Analytical</p>
+                            <p><strong>Definition:</strong> Patterns of students giving up, shutting down, or struggling emotionally when faced with academic challenges.</p>
+                            <p><strong>Example Excerpts:</strong></p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--purple); margin: 1rem 0;">
+                                "He shuts down because it's hard… this is the first time school has been difficult for him." <em>(Victoria)</em>
+                            </p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--purple); margin: 1rem 0;">
+                                "Students hit a speed bump and don't know what to do." <em>(Matthew)</em>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card" onclick="toggleCard(this)" style="margin-bottom: 1.5rem;">
+                        <div class="card-header" style="font-size: 1.3rem;">
+                            <div class="card-header-content">
+                                <span style="color: var(--purple); font-weight: 700;">Code 6</span>
+                                <span>Grading Policies as Barriers</span>
+                            </div>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="card-content">
+                            <p><strong>Type:</strong> Analytical</p>
+                            <p><strong>Definition:</strong> Grading structures that undermine learning, risk-taking, and student persistence.</p>
+                            <p><strong>Example Excerpts:</strong></p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--purple); margin: 1rem 0;">
+                                "If everything is summative… students aren't allowed to practice or fail." <em>(Matthew)</em>
+                            </p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--purple); margin: 1rem 0;">
+                                "Grades become about whether the parent checks the portal, not about learning." <em>(Matthew)</em>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card" onclick="toggleCard(this)" style="margin-bottom: 1.5rem;">
+                        <div class="card-header" style="font-size: 1.3rem;">
+                            <div class="card-header-content">
+                                <span style="color: var(--purple); font-weight: 700;">Code 9</span>
+                                <span>Communication Breakdowns Between Systems</span>
+                            </div>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="card-content">
+                            <p><strong>Type:</strong> Analytical</p>
+                            <p><strong>Definition:</strong> Failures in communication between teachers, families, universities, and agencies that hinder student preparation.</p>
+                            <p><strong>Example Excerpts:</strong></p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--purple); margin: 1rem 0;">
+                                "Is it a disconnect because we never communicated when handing the student off to the university?" <em>(Monica)</em>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card" onclick="toggleCard(this)" style="margin-bottom: 1.5rem;">
+                        <div class="card-header" style="font-size: 1.3rem;">
+                            <div class="card-header-content">
+                                <span style="color: var(--purple); font-weight: 700;">Code 10</span>
+                                <span>Siloed Systems / Fragmentation</span>
+                            </div>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="card-content">
+                            <p><strong>Type:</strong> Analytical</p>
+                            <p><strong>Definition:</strong> Interpretations that educational stakeholders operate independently rather than collaboratively, creating misalignment.</p>
+                            <p><strong>Example Excerpts:</strong></p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--purple); margin: 1rem 0;">
+                                "We have so many systems… but we don't make sure they're interconnected." <em>(Monica)</em>
+                            </p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--purple); margin: 1rem 0;">
+                                "Everyone is working toward the same goal, but separately." <em>(Kima, summarizing Monica)</em>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card" onclick="toggleCard(this)" style="margin-bottom: 1.5rem;">
+                        <div class="card-header" style="font-size: 1.3rem;">
+                            <div class="card-header-content">
+                                <span style="color: var(--purple); font-weight: 700;">Code 11</span>
+                                <span>Limitations of Standardized Testing</span>
+                            </div>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="card-content">
+                            <p><strong>Type:</strong> Analytical</p>
+                            <p><strong>Definition:</strong> Interpretations that standardized tests (ACT, SAT, EOG) are unreliable or inequitable indicators of readiness.</p>
+                            <p><strong>Example Excerpts:</strong></p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--purple); margin: 1rem 0;">
+                                "I think the ACT is a load of crap… I wouldn't have been college ready by that measure." <em>(Victoria)</em>
+                            </p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--purple); margin: 1rem 0;">
+                                "These tests are mostly memorization… not application or critical thinking." <em>(Courtney)</em>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card" onclick="toggleCard(this)" style="margin-bottom: 1.5rem;">
+                        <div class="card-header" style="font-size: 1.3rem;">
+                            <div class="card-header-content">
+                                <span style="color: var(--purple); font-weight: 700;">Code 13</span>
+                                <span>Need for Cross-Sector Collaboration</span>
+                            </div>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="card-content">
+                            <p><strong>Type:</strong> Analytical</p>
+                            <p><strong>Definition:</strong> Interpretations that collaboration between K–12 and higher education is necessary to address the readiness gap.</p>
+                            <p><strong>Example Excerpts:</strong></p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--purple); margin: 1rem 0;">
+                                "Yes, I think K–12 educators would be interested in participating." <em>(Monica)</em>
+                            </p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--purple); margin: 1rem 0;">
+                                "This would be valuable… as long as it produces outcomes, not just another meeting." <em>(Victoria)</em>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card" onclick="toggleCard(this)" style="margin-bottom: 1.5rem;">
+                        <div class="card-header" style="font-size: 1.3rem;">
+                            <div class="card-header-content">
+                                <span style="color: var(--purple); font-weight: 700;">Code 14</span>
+                                <span>Equity & Access Barriers</span>
+                            </div>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="card-content">
+                            <p><strong>Type:</strong> Analytical</p>
+                            <p><strong>Definition:</strong> Structural obstacles that disproportionately disadvantage certain students or families in navigating educational systems.</p>
+                            <p><strong>Example Excerpts:</strong></p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--purple); margin: 1rem 0;">
+                                "Parent Portal varies widely — that creates inequitable support." <em>(Victoria)</em>
+                            </p>
+                            <p style="padding-left: 1.5rem; border-left: 3px solid var(--purple); margin: 1rem 0;">
+                                "Even if you know how to access services, the systems are really difficult for families… burdensome or not understood." <em>(Monica)</em>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="step3">
+        <div class="content-container">
+            <div class="section-header">
+                <h2 class="section-title">The Analysis Process</h2>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-header">
+                    <div class="card-header-content">
+                        <span class="icon">🔄</span>
+                        <span>My Iterative Coding Journey</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="card-content">
+                    <p>I began the analytic process by conducting <span class="highlight">multiple close readings</span> of the interview and focus group transcripts to familiarize myself with both the content and the emotional tone of the data.</p>
+                    
+                    <p>During this phase, I generated a set of <strong>descriptive codes</strong> to capture what participants explicitly stated. Examples include soft skills, self-advocacy, parental involvement, and lack of a clear definition. These codes anchored the literal and surface-level meanings in the data.</p>
+                    
+                    <p>As I continued engaging with the transcripts, I developed <strong>analytical codes</strong>, which allowed me to interpret the deeper structures and patterns embedded within participants' comments. These included codes such as rigor gaps, misalignment between systems, failure avoidance, communication breakdowns, and siloed systems. Analytical coding required me to move beyond what was said to interpret what these statements suggested about the broader educational ecosystem.</p>
+                    
+                    <p>With both descriptive and analytical codes in place, I began <span class="highlight">clustering related codes together</span>. I printed my code list, spread out excerpts, and created visual maps to experiment with multiple ways of grouping the meanings. I asked myself: <em>What patterns are emerging? How do these codes interact? What story are they collectively telling about college readiness?</em></p>
+                </div>
+            </div>
+
+            <div style="margin: 4rem 0;">
+                <h3 style="font-family: 'Montserrat', sans-serif; color: var(--turquoise); font-size: 2rem; text-align: center; margin-bottom: 2rem;">The Journey: Codes to Themes</h3>
+                <div class="process-flow">
+                    <div class="flow-step">
+                        <div class="flow-step-number">1</div>
+                        <div class="flow-step-title">Close Reading</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-step-number">2</div>
+                        <div class="flow-step-title">Descriptive Coding</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-step-number">3</div>
+                        <div class="flow-step-title">Analytical Coding</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-step-number">4</div>
+                        <div class="flow-step-title">Clustering Codes</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-step-number">5</div>
+                        <div class="flow-step-title">Theme Development</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-header">
+                    <div class="card-header-content">
+                        <span class="icon">🎯</span>
+                        <span>Clustering & Pattern Recognition</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="card-content">
+                    <p>Several clusters began to form naturally:</p>
+                    
+                    <p><strong>Cluster 1:</strong> Codes about divergent definitions, inconsistent rigor, inequitable access, and testing limitations grouped together, signaling that educators lacked a unified understanding of college readiness.</p>
+                    
+                    <p><strong>Cluster 2:</strong> Codes about soft skills, self-advocacy, executive function, and grading policies clustered into a pattern highlighting what educators viewed as the real indicators of readiness.</p>
+                    
+                    <p><strong>Cluster 3:</strong> Codes about misalignment, communication breakdowns, and system fragmentation came together to illustrate the structural disconnects across K–12 and higher education.</p>
+                    
+                    <p><strong>Cluster 4:</strong> References to changing career landscapes, outdated measures, and modern pathways formed a cluster around the evolving nature of readiness.</p>
+                    
+                    <p>I then re-examined the dataset to ensure each cluster was grounded in the data rather than my assumptions. I checked for <span class="highlight">internal coherence within clusters and distinctiveness between them</span>. Some early clusters were collapsed, and others were refined to better reflect the central organizing concepts emerging from participant dialogue.</p>
+                </div>
+            </div>
+
+            <div style="margin: 4rem 0;">
+                <h3 style="font-family: 'Playfair Display', serif; color: var(--yellow); font-size: 3rem; text-align: center; margin-bottom: 1rem;">Final Theme Glossary</h3>
+                <p style="text-align: center; color: var(--light); font-size: 1.2rem; margin-bottom: 3rem;">Four coherent themes emerged from the iterative analysis process</p>
+                
+                <div class="theme-card" onclick="toggleTheme(this)">
+                    <div class="theme-header">
+                        <span>🌟 Theme 1: College Readiness Is Undefined and Uneven</span>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    
+                    <div class="theme-content">
+                        <div class="theme-concept">
+                            <div class="theme-concept-label">Organizing Concept</div>
+                            <p style="color: var(--card-text); margin: 0;">Educational stakeholders lack a shared, stable definition of "college readiness," leading to inconsistent interpretations and uneven expectations across schools and systems.</p>
+                        </div>
+                        
+                        <div class="theme-definition">
+                            <strong>Definition:</strong> Participants repeatedly described college readiness in divergent ways, often redefining it mid-discussion or tying it to vastly different indicators (rigor, independence, soft skills, accommodations, transition planning). These inconsistencies contribute to uneven student preparation and confusion about what readiness entails at both the secondary and postsecondary levels.
+                        </div>
+                        
+                        <div class="theme-codes">
+                            <div class="theme-codes-label">Codes Feeding Into This Theme</div>
+                            <span class="code-tag">Code 1: Lack of Shared Definition</span>
+                            <span class="code-tag">Code 2: Rigor Gaps Across Schools</span>
+                            <span class="code-tag">Code 11: Limitations of Standardized Testing</span>
+                            <span class="code-tag">Code 14: Equity & Access Barriers</span>
+                        </div>
+                        
+                        <div class="theme-boundaries">
+                            <div class="theme-boundaries-label">Boundaries (What Does Not Belong Here)</div>
+                            <p style="color: var(--card-text); margin: 0;">Does not include detailed discussions of soft skills (Theme 2). Does not include structural/systemic misalignment between K–12 and higher ed (Theme 3). Does not include nontraditional pathways unless tied to definitional inconsistency.</p>
+                        </div>
+                        
+                        <div class="theme-rq">
+                            <div class="theme-rq-label">Connection to Research Questions</div>
+                            <p style="color: var(--card-text); margin: 0;"><strong>RQ1:</strong> Shows that K–12 and postsecondary educators do not share a definition of readiness.<br><strong>RQ2:</strong> Demonstrates how perspectives begin to shift once awareness of inconsistency emerges.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theme-card" onclick="toggleTheme(this)">
+                    <div class="theme-header">
+                        <span>🌟 Theme 2: Soft Skills and Self-Advocacy Are the Real Indicators of Readiness</span>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    
+                    <div class="theme-content">
+                        <div class="theme-concept">
+                            <div class="theme-concept-label">Organizing Concept</div>
+                            <p style="color: var(--card-text); margin: 0;">Participants identify behavioral, emotional, and interpersonal skills—not academic metrics—as the most predictive indicators of whether students succeed in college or career pathways.</p>
+                        </div>
+                        
+                        <div class="theme-definition">
+                            <strong>Definition:</strong> Across transcripts, participants described readiness in terms of students' ability to communicate effectively, recover from failure, advocate for themselves, manage their responsibilities, and display resilience. These noncognitive skills were framed as critical gaps that traditional curricula and standardized tests fail to measure or cultivate.
+                        </div>
+                        
+                        <div class="theme-codes">
+                            <div class="theme-codes-label">Codes Feeding Into This Theme</div>
+                            <span class="code-tag">Code 4: Soft Skills as Essential</span>
+                            <span class="code-tag">Code 5: Failure Avoidance</span>
+                            <span class="code-tag">Code 7: Self-Advocacy Deficits</span>
+                            <span class="code-tag">Code 6: Grading Policies as Barriers</span>
+                        </div>
+                        
+                        <div class="theme-boundaries">
+                            <div class="theme-boundaries-label">Boundaries</div>
+                            <p style="color: var(--card-text); margin: 0;">Does not include commentary on systemic misalignment (Theme 3). Does not include discussions of different post-high school pathways unless tied to skill demands. Does not include equity/access unless connected to soft skill development.</p>
+                        </div>
+                        
+                        <div class="theme-rq">
+                            <div class="theme-rq-label">Connection to Research Questions</div>
+                            <p style="color: var(--card-text); margin: 0;"><strong>RQ1:</strong> Provides insight into how educators define readiness beyond academic achievement.<br><strong>RQ2:</strong> Shows how educator perspectives evolve when discussing the root causes of unpreparedness.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theme-card" onclick="toggleTheme(this)">
+                    <div class="theme-header">
+                        <span>🌟 Theme 3: Systems Designed to Support Students Are Siloed and Misaligned</span>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    
+                    <div class="theme-content">
+                        <div class="theme-concept">
+                            <div class="theme-concept-label">Organizing Concept</div>
+                            <p style="color: var(--card-text); margin: 0;">Participants describe educational systems (K–12, higher education, families, agencies, policy structures) as disconnected and operating independently, resulting in misaligned expectations and ineffective transitions for students.</p>
+                        </div>
+                        
+                        <div class="theme-definition">
+                            <strong>Definition:</strong> This theme captures the perceived fragmentation across institutions that should collectively support students. Participants noted communication gaps, inconsistent LMS structures, unclear expectations, and limited collaboration between teachers, administrators, families, and colleges. These systemic disconnects contribute directly to students' readiness struggles.
+                        </div>
+                        
+                        <div class="theme-codes">
+                            <div class="theme-codes-label">Codes Feeding Into This Theme</div>
+                            <span class="code-tag">Code 3: Misalignment K–12 & Higher Ed</span>
+                            <span class="code-tag">Code 9: Communication Breakdowns</span>
+                            <span class="code-tag">Code 10: Siloed Systems</span>
+                            <span class="code-tag">Code 13: Need for Collaboration</span>
+                        </div>
+                        
+                        <div class="theme-boundaries">
+                            <div class="theme-boundaries-label">Boundaries</div>
+                            <p style="color: var(--card-text); margin: 0;">Does not include personal skill deficits (Theme 2). Does not include definitional confusion unless connected to system design. Does not include nontraditional pathways (Theme 4).</p>
+                        </div>
+                        
+                        <div class="theme-rq">
+                            <div class="theme-rq-label">Connection to Research Questions</div>
+                            <p style="color: var(--card-text); margin: 0;"><strong>Main RQ:</strong> "What happens when educators are brought together?" → This theme demonstrates the problem collaboration aims to solve.<br><strong>RQ3 & RQ4:</strong> Highlights how cross-sector conversations reveal incorrect assumptions and interest in curriculum collaboration.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theme-card" onclick="toggleTheme(this)">
+                    <div class="theme-header">
+                        <span>🌟 Theme 4: College Readiness Must Adapt to Modern Pathways</span>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    
+                    <div class="theme-content">
+                        <div class="theme-concept">
+                            <div class="theme-concept-label">Organizing Concept</div>
+                            <p style="color: var(--card-text); margin: 0;">Students' career and educational options have changed dramatically, but institutional definitions and metrics of readiness remain tied to outdated assumptions about four-year college trajectories.</p>
+                        </div>
+                        
+                        <div class="theme-definition">
+                            <strong>Definition:</strong> Participants emphasized that college is no longer the only or best path for many students. They referenced trades, community college, YouTube entrepreneurship, gig work, and AI-related fields. They also noted an evolving skill landscape that current measures (e.g., ACT, EOG) fail to capture.
+                        </div>
+                        
+                        <div class="theme-codes">
+                            <div class="theme-codes-label">Codes Feeding Into This Theme</div>
+                            <span class="code-tag">Code 11: Limitations of Testing</span>
+                            <span class="code-tag">Code 4: Soft Skills</span>
+                            <span class="code-tag">Code 14: Equity & Access Barriers</span>
+                            <span class="code-tag">Comments about nontraditional careers</span>
+                        </div>
+                        
+                        <div class="theme-boundaries">
+                            <div class="theme-boundaries-label">Boundaries</div>
+                            <p style="color: var(--card-text); margin: 0;">Does not include structural misalignment (Theme 3). Does not include skill deficits unless tied to evolving workforce demands. Does not include definitional disagreements unless framed as outdated models.</p>
+                        </div>
+                        
+                        <div class="theme-rq">
+                            <div class="theme-rq-label">Connection to Research Questions</div>
+                            <p style="color: var(--card-text); margin: 0;"><strong>RQ3:</strong> Shows how educator assumptions about the "traditional" path are challenged.<br><strong>RQ4:</strong> Provides insight into how collaboration could expand curriculum design to include modern pathways.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-header">
+                    <div class="card-header-content">
+                        <span class="icon">✅</span>
+                        <span>Testing & Refining Themes</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="card-content">
+                    <p>I tested these themes by returning to the raw transcripts and asking, <em>Do these themes meaningfully represent the participants' experiences and perspectives? Do they answer the research questions?</em></p>
+                    
+                    <p>Each theme captured a major tension or pattern within the data and connected directly to one or more of my research questions.</p>
+                    
+                    <p>Finally, I refined the themes by <span class="highlight">writing definitions, identifying boundaries, and determining which codes fed into each theme</span>. This process clarified how the data cohered into a holistic understanding of the college readiness issue.</p>
+                    
+                    <p>The resulting themes not only represent participants' meaning-making but also illuminate structural and conceptual gaps in the current educational landscape—gaps that collaborative curriculum design might address.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="step4">
+        <div class="content-container">
+            <div class="section-header">
+                <h2 class="section-title">Interpretation</h2>
+                <p style="text-align: center; color: var(--light); font-size: 1.2rem; margin-top: 1rem;">A holistic meaning-making across the themes and the full dataset</p>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-header">
+                    <div class="card-header-content">
+                        <span class="icon">📖</span>
+                        <span>The Holistic Portrait</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="card-content">
+                    <p>The data from both the individual interview and the focus group reveal a <span class="highlight">complex and layered portrait of college readiness that extends far beyond academic preparation</span>. When examined holistically, the themes expose shared concerns, diverging perspectives, systemic silences, and underlying power dynamics that shape how readiness is constructed, perceived, and acted upon in K–12 and higher education contexts.</p>
+                </div>
+            </div>
+
+            <div class="theme-card" onclick="toggleTheme(this)">
+                <div class="theme-header">
+                    <span>🌟 Commonalities Across Participants</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                
+                <div class="theme-content">
+                    <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1.5rem;">Across all participants, there was a strong consensus that <span class="highlight">traditional indicators of readiness—grades, test scores, and curriculum benchmarks—do not accurately reflect a student's preparedness</span> for college or adult life. Participants described readiness in terms of soft skills, independence, executive functioning, resilience, and communication. The repeated emphasis on self-advocacy and the ability to navigate bureaucratic systems suggests that readiness is as much about navigating institutions as it is about academic content.</p>
+                    
+                    <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1.5rem;">Another shared pattern was the belief that systems intended to support students are insufficiently coordinated. Participants across both data sources described working toward similar goals—preparing students for postsecondary success—but doing so in isolation, with mismatched expectations and inadequate communication. This sense of fragmentation appeared in discussions about LMS systems, transition planning, parental access, grading policies, and external agencies.</p>
+                    
+                    <p style="color: var(--card-text); line-height: 1.8;">Finally, the majority of participants expressed a <span class="highlight">desire for cross-sector collaboration</span>. Participants recognized that the readiness problem is too complex and too systemic for any one sector to address alone, and they viewed structured opportunities for collaborative dialogue as both necessary and overdue.</p>
+                </div>
+            </div>
+
+            <div class="theme-card" onclick="toggleTheme(this)">
+                <div class="theme-header">
+                    <span>⚖️ Divergences Between Perspectives</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                
+                <div class="theme-content">
+                    <p style="color: var(--card-text); font-style: italic; margin-bottom: 1.5rem;">While commonalities were strong, several key divergences emerged:</p>
+                    
+                    <div style="background: rgba(6, 214, 160, 0.1); padding: 1.5rem; border-radius: 15px; margin-bottom: 1.5rem; border-left: 4px solid var(--turquoise);">
+                        <h4 style="color: var(--purple); font-family: 'Montserrat', sans-serif; font-size: 1.3rem; margin-bottom: 1rem;">1. Diverging Understandings of Responsibility</h4>
+                        <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1rem;">Participants disagreed—sometimes subtly, sometimes overtly—on who is responsible for readiness development.</p>
+                        <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 0.5rem;"><strong>K–12 educators</strong> tended to point toward systemic constraints, inequitable rigor, grading pressures, and parental expectations.</p>
+                        <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1rem;"><strong>Postsecondary experiences</strong> (as reflected in Kima's commentary) emphasized skill deficits and misaligned expectations.</p>
+                        <p style="color: var(--card-text); line-height: 1.8;">This divergence reveals a tension: readiness is framed simultaneously as an instructional issue, a behavioral issue, and a structural issue, depending on one's position within the system.</p>
+                    </div>
+                    
+                    <div style="background: rgba(114, 9, 183, 0.1); padding: 1.5rem; border-radius: 15px; margin-bottom: 1.5rem; border-left: 4px solid var(--purple);">
+                        <h4 style="color: var(--turquoise); font-family: 'Montserrat', sans-serif; font-size: 1.3rem; margin-bottom: 1rem;">2. Diverging Experiences With Rigor</h4>
+                        <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1rem;">Participants from different school contexts described drastically different levels of academic rigor, reinforcing the theme that readiness varies widely based on the school a student attends.</p>
+                        <p style="color: var(--card-text); line-height: 1.8;">This divergence was particularly pronounced in the focus group, where participants described inequities even between schools only minutes apart.</p>
+                    </div>
+                    
+                    <div style="background: rgba(255, 214, 10, 0.1); padding: 1.5rem; border-radius: 15px; border-left: 4px solid var(--yellow);">
+                        <h4 style="color: var(--purple); font-family: 'Montserrat', sans-serif; font-size: 1.3rem; margin-bottom: 1rem;">3. Diverging Views on Standardized Testing</h4>
+                        <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1rem;">While all participants acknowledged testing limitations, the intensity of criticism varied.</p>
+                        <p style="color: var(--card-text); line-height: 1.8;">Some saw tests as mildly unhelpful; others saw them as <span class="highlight">actively harmful</span>—obscuring real readiness indicators, privileging memorization over critical thinking, and creating false narratives about student capability.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="theme-card" onclick="toggleTheme(this)">
+                <div class="theme-header">
+                    <span>🔇 Silences in the Data</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                
+                <div class="theme-content">
+                    <p style="color: var(--card-text); font-style: italic; margin-bottom: 1.5rem;">Silences—what participants did not say—are equally revealing.</p>
+                    
+                    <div style="background: var(--card-bg); padding: 1.5rem; border-radius: 15px; margin-bottom: 1.5rem; border: 2px solid var(--turquoise);">
+                        <h4 style="color: var(--purple); font-family: 'Montserrat', sans-serif; font-size: 1.3rem; margin-bottom: 1rem;">1. The Absence of Student Voice</h4>
+                        <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1rem;">While participants frequently discussed student preparedness, <span class="highlight">no students were included in the conversation</span>. Their true experiences, motivations, fears, and hopes remain unspoken, and thus the data reflect adult interpretations rather than student perspectives.</p>
+                        <p style="color: var(--card-text); line-height: 1.8;">This silence reflects a broader systemic tendency for educators to speak <em>about</em> students rather than <em>with</em> them.</p>
+                    </div>
+                    
+                    <div style="background: var(--card-bg); padding: 1.5rem; border-radius: 15px; margin-bottom: 1.5rem; border: 2px solid var(--purple);">
+                        <h4 style="color: var(--turquoise); font-family: 'Montserrat', sans-serif; font-size: 1.3rem; margin-bottom: 1rem;">2. Racial and Socioeconomic Dynamics</h4>
+                        <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1rem;">Although participants touched on inequitable access and systemic burdens for families, they did not explicitly discuss how race, class, or linguistic diversity intersect with readiness.</p>
+                        <p style="color: var(--card-text); line-height: 1.8;">Given well-established disparities in educational opportunity, this silence suggests <span class="highlight">possible discomfort or lack of awareness in naming structural inequities explicitly</span>.</p>
+                    </div>
+                    
+                    <div style="background: var(--card-bg); padding: 1.5rem; border-radius: 15px; border: 2px solid var(--yellow);">
+                        <h4 style="color: var(--purple); font-family: 'Montserrat', sans-serif; font-size: 1.3rem; margin-bottom: 1rem;">3. Institutional Incentives</h4>
+                        <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1rem;">There was no discussion of how grading policies, standardized testing requirements, or resource allocations are shaped by district, state, or federal policies.</p>
+                        <p style="color: var(--card-text); line-height: 1.8;">This silence may reflect the extent to which educators feel these forces are immutable or beyond their control.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="theme-card" onclick="toggleTheme(this)">
+                <div class="theme-header">
+                    <span>🏛️ Power and Systemic Structures</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                
+                <div class="theme-content">
+                    <p style="color: var(--card-text); font-style: italic; margin-bottom: 1.5rem;">The themes reveal multiple forms of systemic power that shape readiness:</p>
+                    
+                    <div style="background: linear-gradient(135deg, rgba(6, 214, 160, 0.2), rgba(114, 9, 183, 0.1)); padding: 2rem; border-radius: 15px; margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--purple); font-family: 'Montserrat', sans-serif; font-size: 1.4rem; margin-bottom: 1rem;">1. Institutional Power</h4>
+                        <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1rem;">Standardized tests, grading systems, and LMS structures were portrayed as <span class="highlight">unchallenged authorities that dictate student success</span>, despite their misalignment with real readiness indicators.</p>
+                        <p style="color: var(--card-text); line-height: 1.8;">These systems hold tremendous power over both teaching and student identity.</p>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, rgba(114, 9, 183, 0.2), rgba(255, 214, 10, 0.1)); padding: 2rem; border-radius: 15px; margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--turquoise); font-family: 'Montserrat', sans-serif; font-size: 1.4rem; margin-bottom: 1rem;">2. Professional Power Hierarchies</h4>
+                        <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1rem;">K–12 and higher education actors occupy different positions in the educational hierarchy.</p>
+                        <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1rem;">K–12 educators described constraints, parent pressures, and high accountability; higher ed expectations assume student independence without consideration of prior supports.</p>
+                        <p style="color: var(--card-text); line-height: 1.8;">These structural hierarchies <span class="highlight">reinforce the very misalignment participants identified</span>.</p>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, rgba(255, 214, 10, 0.2), rgba(6, 214, 160, 0.1)); padding: 2rem; border-radius: 15px;">
+                        <h4 style="color: var(--purple); font-family: 'Montserrat', sans-serif; font-size: 1.4rem; margin-bottom: 1rem;">3. Family Power Dynamics</h4>
+                        <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1rem;">Parents hold significant influence—sometimes supportive, often overwhelming or obstructive.</p>
+                        <p style="color: var(--card-text); line-height: 1.8;">Their access to information and comfort navigating systems directly affects student transitions, <span class="highlight">amplifying inequities for families with fewer resources</span> or less familiarity with educational institutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="step5">
+        <div class="content-container">
+            <div class="section-header">
+                <h2 class="section-title">Reflexivity</h2>
+                <p style="text-align: center; color: var(--light); font-size: 1.2rem; margin-top: 1rem;">How my positionality, assumptions, and lived experience shaped interpretation—and how the data shaped me</p>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-header">
+                    <div class="card-header-content">
+                        <span class="icon">🪞</span>
+                        <span>Entering the Research: My Starting Point</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="card-content">
+                    <p>As a <span class="highlight">Black woman, a former English teacher, and now an instructional designer</span> working at the intersection of K–12 and higher education, I entered this research with a deeply personal and professional connection to the problem of college readiness.</p>
+                    
+                    <p>My assumptions were shaped by years of observing students arrive in my college classes underprepared for the type of thinking, writing, and self-direction expected of them. I also carried assumptions about systemic fragmentation—the belief that secondary and postsecondary systems operate in silos, rarely communicating in meaningful ways.</p>
+                    
+                    <p>Throughout the analysis, I became increasingly aware of how these assumptions both clarified and complicated my interpretation of the data.</p>
+                </div>
+            </div>
+
+            <div class="theme-card" onclick="toggleTheme(this)">
+                <div class="theme-header">
+                    <span>🌟 What Challenged My Preconceived Notions</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                
+                <div class="theme-content">
+                    <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1.5rem;">One of the most surprising aspects of the data was the extent to which K–12 educators described readiness <span class="highlight">not through academic lenses but through behavioral and emotional competencies</span>. I expected soft skills to emerge, but I underestimated how central they were to participants' definitions—so central that academic indicators became secondary or even peripheral.</p>
+                    
+                    <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1.5rem;">This challenged my earlier belief that readiness failures were primarily academic or curricular. Instead, educators highlighted resilience, communication, executive functioning, and the ability to persist through difficulty as the foundational skills students were missing.</p>
+                    
+                    <div style="background: rgba(255, 214, 10, 0.2); padding: 1.5rem; border-radius: 15px; border-left: 4px solid var(--yellow);">
+                        <p style="color: var(--card-text); line-height: 1.8; margin: 0;">This shift required me to <strong>interrogate my original focus on curriculum alignment</strong>. I realized I had, perhaps unconsciously, privileged the academic side of readiness because of my discipline-specific background in English. The data forced me to widen my lens and acknowledge the extent to which readiness is fundamentally relational, behavioral, and developmental.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="theme-card" onclick="toggleTheme(this)">
+                <div class="theme-header">
+                    <span>✅ What Aligned With My Expectations</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                
+                <div class="theme-content">
+                    <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1.5rem;">The theme of systemic misalignment—siloed systems, inconsistent rigor, communication gaps—aligned strongly with my initial assumptions. Hearing Monica describe the lack of cross-sector communication and Victoria describe the dramatic differences in rigor across districts <span class="highlight">reaffirmed my belief that readiness is hindered by structural fragmentation</span> rather than teacher-level shortcomings.</p>
+                    
+                    <p style="color: var(--card-text); line-height: 1.8;">Additionally, the critique of standardized tests mirrored my long-standing skepticism of large-scale assessments as indicators of capability. Participants' frustration reinforced what I had previously observed: test results can mask deep inequities and often fail to capture the competencies that matter most for student success.</p>
+                </div>
+            </div>
+
+            <div class="theme-card" onclick="toggleTheme(this)">
+                <div class="theme-header">
+                    <span>⚡ Moments Where My Subjectivity Was Activated</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                
+                <div class="theme-content">
+                    <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1.5rem;">My identity as a <span class="highlight">Black woman and first-generation college graduate</span> resurfaced strongly when participants spoke about equity and access barriers. For example, when Monica described how educational systems are burdensome and inaccessible for many families, I felt an immediate emotional resonance.</p>
+                    
+                    <div style="background: rgba(6, 214, 160, 0.15); padding: 2rem; border-radius: 15px; margin-bottom: 1.5rem; border: 2px solid var(--turquoise);">
+                        <p style="color: var(--card-text); line-height: 1.8; margin: 0;">I recognized the systemic patterns she referenced—institutions whose structures privilege families who already know how to navigate them. This moment activated my own lived understanding of how education can marginalize certain communities, and <strong>I had to pause to ensure that I was not projecting my personal experiences onto participants' words</strong>.</p>
+                    </div>
+                    
+                    <p style="color: var(--card-text); line-height: 1.8;">Similarly, discussions about parental involvement stirred memories of my mother preparing me to enter spaces where others might underestimate me. This emotional undercurrent made me more attuned to the power dynamics embedded in parental access, institutional navigation, and student agency. Recognizing this allowed me to interpret the data with greater empathy—but it also required deliberate reflexive attention to avoid over-identification with the experiences described.</p>
+                </div>
+            </div>
+
+            <div class="theme-card" onclick="toggleTheme(this)">
+                <div class="theme-header">
+                    <span>💫 Data That Evoked Emotional Responses</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                
+                <div class="theme-content">
+                    <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1.5rem;">Some narratives, particularly those involving students who shut down when facing adversity, elicited strong feelings. I have witnessed this pattern repeatedly in my own classrooms, and the familiarity of these stories reminded me of the frustration and compassion I felt toward students who lacked support, guidance, or confidence.</p>
+                    
+                    <p style="color: var(--card-text); line-height: 1.8;">These feelings heightened my awareness of how grading systems and instructional structures can unintentionally reinforce inequity. To maintain analytic clarity, <span class="highlight">I documented these emotions during coding to distinguish between what the data actually revealed and the affective responses it triggered</span>.</p>
+                </div>
+            </div>
+
+            <div class="theme-card" onclick="toggleTheme(this)">
+                <div class="theme-header">
+                    <span>🔍 How My Positionality Shaped Interpretation</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                
+                <div class="theme-content">
+                    <p style="color: var(--card-text); font-style: italic; margin-bottom: 1.5rem;">My positionality influenced my analysis in several ways:</p>
+                    
+                    <div style="background: linear-gradient(135deg, rgba(6, 214, 160, 0.2), rgba(114, 9, 183, 0.1)); padding: 2rem; border-radius: 15px; margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--purple); font-family: 'Montserrat', sans-serif; font-size: 1.4rem; margin-bottom: 1rem;">1. Sensitivity to Systemic Inequities</h4>
+                        <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1rem;">Because of my lived experience, I naturally attended to structural barriers—unequal rigor, inaccessible systems, inconsistent parental resources. This heightened awareness allowed me to see how equity and access cut across nearly every theme.</p>
+                        <p style="color: var(--card-text); line-height: 1.8;">At the same time, reflexivity required me to ensure that equity themes <span class="highlight">emerged organically from the data rather than from my prior commitments</span> to social justice frameworks.</p>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, rgba(114, 9, 183, 0.2), rgba(255, 214, 10, 0.1)); padding: 2rem; border-radius: 15px; margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--turquoise); font-family: 'Montserrat', sans-serif; font-size: 1.4rem; margin-bottom: 1rem;">2. Awareness of Cross-System Misalignment</h4>
+                        <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1rem;">Working in both K–12 and higher ed made me particularly attuned to misalignment between the two sectors. This positionality made those patterns more visible to me—but it also required me to guard against overstating misalignment where it was not explicitly described.</p>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, rgba(255, 214, 10, 0.2), rgba(6, 214, 160, 0.1)); padding: 2rem; border-radius: 15px;">
+                        <h4 style="color: var(--purple); font-family: 'Montserrat', sans-serif; font-size: 1.4rem; margin-bottom: 1rem;">3. Recognition of Soft Skills as Essential</h4>
+                        <p style="color: var(--card-text); line-height: 1.8;">My experience with struggling first-year writers primed me to see soft skill deficits as academic barriers. The data expanded this view, revealing soft skills not simply as writing challenges but as <span class="highlight">survival skills necessary for navigating institutions and adulthood</span>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="theme-card" onclick="toggleTheme(this)">
+                <div class="theme-header">
+                    <span>🌱 How the Data Changed My Thinking</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                
+                <div class="theme-content">
+                    <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1.5rem;">This analysis deepened my understanding of readiness as a <span class="highlight">multi-dimensional construct</span> shaped by:</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                        <div style="background: var(--card-bg); padding: 1.5rem; border-radius: 15px; border: 3px solid var(--turquoise); box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
+                            <p style="color: var(--purple); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;">Skills students possess</p>
+                        </div>
+                        <div style="background: var(--card-bg); padding: 1.5rem; border-radius: 15px; border: 3px solid var(--purple); box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
+                            <p style="color: var(--turquoise); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;">Systems they must navigate</p>
+                        </div>
+                        <div style="background: var(--card-bg); padding: 1.5rem; border-radius: 15px; border: 3px solid var(--yellow); box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
+                            <p style="color: var(--purple); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;">Assumptions educators hold</p>
+                        </div>
+                        <div style="background: var(--card-bg); padding: 1.5rem; border-radius: 15px; border: 3px solid var(--turquoise); box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
+                            <p style="color: var(--purple); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;">Inequities baked into structures</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(6, 214, 160, 0.15); padding: 2rem; border-radius: 15px; border-left: 4px solid var(--turquoise); margin-bottom: 1.5rem;">
+                        <p style="color: var(--card-text); line-height: 1.8; margin-bottom: 1rem;">The data clarified that <strong>readiness cannot be solved by changing curricula alone</strong>. It requires:</p>
+                        <ul style="color: var(--card-text); line-height: 1.8; padding-left: 2rem;">
+                            <li>Collaboration across sectors</li>
+                            <li>Intentional cultivation of soft skills</li>
+                            <li>Acknowledgement of systemic inequities that shape students' transitions</li>
+                        </ul>
+                    </div>
+                    
+                    <p style="color: var(--card-text); line-height: 1.8; font-size: 1.2rem; background: linear-gradient(135deg, rgba(255, 214, 10, 0.3), rgba(114, 9, 183, 0.2)); padding: 1.5rem; border-radius: 15px; text-align: center;">It also reaffirmed my commitment to <span class="highlight">designing a collaborative workshop grounded in design thinking</span>—one that invites educators to collectively redefine readiness, examine misalignment, and co-develop more equitable pathways.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleCard(card) {
+            const content = card.querySelector('.card-content');
+            const icon = card.querySelector('.toggle-icon');
+            
+            content.classList.toggle('open');
+            icon.classList.toggle('open');
+        }
+        
+        function toggleTheme(card) {
+            const content = card.querySelector('.theme-content');
+            const icon = card.querySelector('.toggle-icon');
+            
+            content.classList.toggle('open');
+            icon.classList.toggle('open');
+        }
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
