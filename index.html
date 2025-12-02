@@ -583,11 +583,26 @@
                 font-size: 1.4rem;
             }
         }
+#problem .card-content.open {
+    max-height: 3000px !important;
+    margin-top: 1.5rem !important;
+}
+
+#problem .toggle-icon.open {
+    transform: rotate(180deg);
+}
+
+#problem .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(255, 107, 107, 0.4);
+}
+        
     </style>
 </head>
 <body>
     <nav class="nav">
         <a href="#hero">Home</a>
+        <a href="#problem">The Problem</a>
         <a href="#participants">Participants</a>
         <a href="#step1">Familiarization</a>
         <a href="#step2">Strategy</a>
